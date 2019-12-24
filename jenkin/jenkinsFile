@@ -1,0 +1,24 @@
+pipeline {
+
+agent any
+stages
+{
+stage ('compile stage')
+{
+with gradle(gradle:'GRADLE_HOME')
+{ sh' mvn clean compile'
+ }
+stage('testing stage')
+{
+with gradle(gradle:'GRADLE_HOME')
+        {
+        sh' mvn testing'
+                        }
+}
+stage('deplo')
+{
+with gradle(gradle:'GRADLE_HOME')
+  { sh' mvn deploy'
+      }
+}
+}
