@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Whiteboard — Draw & Erase with Colors</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="toolbar" role="toolbar" aria-label="Whiteboard controls">
+        <div class="tool-group">
+          <button class="tool-btn" data-tool="pen" aria-pressed="true" title="Pen (B)">
+            ✏️ Pen
+          </button>
+          <div class="eraser-group" role="group" aria-label="Eraser modes">
+            <button class="tool-btn" data-tool="eraser-clear" title="Eraser (clear) (E)">🧽 Erase</button>
+            <button class="tool-btn" data-tool="eraser-color" title="Eraser (color paint) (C)">🎨 Color Erase</button>
+          </div>
+        </div>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <div class="colors" role="group" aria-label="Colors">
+          <button class="color-swatch" data-color="#000000" style="--swatch:#000000" title="Black"></button>
+          <button class="color-swatch" data-color="#ff3b30" style="--swatch:#ff3b30" title="Red"></button>
+          <button class="color-swatch" data-color="#ff9500" style="--swatch:#ff9500" title="Orange"></button>
+          <button class="color-swatch" data-color="#ffcc00" style="--swatch:#ffcc00" title="Yellow"></button>
+          <button class="color-swatch" data-color="#34c759" style="--swatch:#34c759" title="Green"></button>
+          <button class="color-swatch" data-color="#007aff" style="--swatch:#007aff" title="Blue"></button>
+          <button class="color-swatch" data-color="#af52de" style="--swatch:#af52de" title="Purple"></button>
+          <label class="color-picker" title="Custom color">
+            <input id="colorPicker" type="color" value="#007aff" aria-label="Custom color" />
+          </label>
+        </div>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <div class="sizes" role="group" aria-label="Brush size">
+          <input id="size" type="range" min="1" max="80" step="1" value="8" />
+          <span id="sizeValue" class="size-value" aria-live="polite">8 px</span>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="actions" role="group" aria-label="Board actions">
+          <button id="clearBtn" class="action-btn" title="Clear (Ctrl+K)">🗑️ Clear</button>
+          <button id="downloadBtn" class="action-btn" title="Download PNG (Ctrl+S)">⬇️ Download</button>
+        </div>
+      </header>
+
+      <main class="board">
+        <canvas id="boardCanvas" aria-label="Drawing canvas"></canvas>
+      </main>
+    </div>
+
+    <script src="./whiteboard.js" defer></script>
+  </body>
+</html>
